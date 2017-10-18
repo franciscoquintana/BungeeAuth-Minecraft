@@ -5,8 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
+
 import me.vik1395.BungeeAuth.Main;
+import me.vik1395.BungeeAuth.Utils.Database;
 
 /*
 
@@ -56,7 +57,7 @@ public class MySQL extends Database {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection(db,user,password);
         } catch (SQLException | InstantiationException | IllegalAccessException e) {
-        	Main.plugin.getLogger().log(Level.SEVERE, "Could not connect to MySQL database! Because: ", e);
+        	Main.plugin.getLogger().severe("Could not connect to MySQL database! Because: " + e.getMessage());
         } catch (ClassNotFoundException e) {
         	Main.plugin.getLogger().severe("JDBC Driver not found!");
             e.printStackTrace();
